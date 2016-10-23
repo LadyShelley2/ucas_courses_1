@@ -1,10 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>这是一个测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Algorithms for Non-negative Matrix Factorization</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href=".\themes\default\css\print.css">
+    <link rel="stylesheet" media="screen, projection" href=".\themes\default\css\screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src=".\themes\default\js\slides.js"></script>
+    
+    
+    
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+        });
+      </script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <!-- /Javascripts -->
 </head>
 <body>
-这是一个测试demo
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Algorithms for Non-negative Matrix Factorization</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>content</h1></header>
+            
+            
+            <section><h2>Introduction</h2>
+
+
+<h2>Non-negative matrix factorization</h2>
+
+
+<h2>Cost functions</h2>
+
+
+<h2>Multiplicative update rules</h2>
+
+
+<h2>Multiplicative  versus  additive update rules</h2>
+
+
+<h2>Proofs of convergence</h2>
+
+
+<h2>Discussion</h2></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>Introduction</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>Non-negative matrix factorization</h1></header>
+            
+            
+            <section><p><strong>Non-negative matrix factorization (NMF)</strong>: Given a non-negative matrix $V$, find non-negative matrix factors $W$ and $H$ such that:</p>
+<p>$$
+V \approx{WH}
+$$</p>
+<ul class="simple">
+<li>$V$ is an $n\times m$ matrix: $m$ examples, $n$ features.</li>
+<li>$W_{n\times r}$, $H_{r\times m}$, where $r\lt m, r\lt n$. <strong>Compressed</strong> !</li>
+<li>$v_{*j}\approx{Wh_{*j}}$, $v$ is approximated by a linear combination of the columns of $W$, weighted by the components of $h$.</li>
+</ul>
+<p><strong>How to find</strong>: NP-hard. Alternating iterative method.</p>
+<p>Two algorithms will be discussed.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>Cost functions</h1></header>
+            
+            
+            <section><p>1.  Euclidean distance
+$$\Arrowvert A-B\Arrowvert^2=\Sigma_{ij}(A_{ij}-B_{ij})^2$$</p>
+<p>lower bounded by zero, vanishes if $A=B$</p>
+<p>2. Divergence
+$$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$</p>
+<ul class="simple">
+<li>lower bounded by zero.</li>
+<li>not symmetric, not distance.</li>
+<li>reduces to the Kullback-Leibler divergence when $\Sigma_{ij}A_{ij}=\Sigma_{ij}B_{ij}=1$</li>
+</ul>
+<p><strong>Kullback-Leibler divergence(relative entropy)</strong></p>
+<p>$$D(p\Arrowvert q)=\Sigma_{i=1}^np(x)\log\frac{p(x)}{q(x)}$$</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>Cost functions</h1></header>
+            
+            
+            <section><p><strong>Problem1</strong> Minimize $\Arrowvert V-WH \Arrowvert^2$ with respect to $W$ and $H$, subject to the constraints $W,H\geq 0$.</p>
+<p><strong>Problem2</strong> Minimize $D(A\Arrowvert B)$ with respect to $W$ and $H$, subject to the constraints $W,H\geq 0$.</p>
+
+<h2>Gradient descent</h2>
+<img alt="file://D:\landslide\demos\./pics/256px-Gradient_descent.svg.png" src="file://D:\landslide\demos\./pics/256px-Gradient_descent.svg.png" /></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-7">
+          <div class="inner">
+            
+            <header><h1>Multiplicative update rules</h1></header>
+            
+            
+            <section><p><strong>Theorem 1</strong> The Euclidean distance $\Arrowvert V-WH\Arrowvert$  is nonincreasing under the update rules</p>
+<p>$$
+\begin{array}{cc}
+H_{a\mu}\leftarrow H_{a\mu}\frac{(W^{T}V_{a\mu})}{(W^{T}WH)_{a\mu}} &amp; W_{ia}\leftarrow W_{ia}\frac{(VH^T)_{ia}}{(WHH^T)_{ia}}
+\end{array}
+$$</p>
+<p>invariant if and only if $W$ and $H$ are at a stationary point of  the distance.</p>
+<p><strong>Theorem 2</strong> The divergence $D(A\Arrowvert B)$ is nonincreasing under the update rules</p>
+<p>$$
+\begin{array}{cc}
+H_{au}\leftarrow\frac{\Sigma_i W_{ia}V_{i\mu}/(WH)_{i\mu}}{\Sigma_k W_{ka}} &amp; W_{ia}\leftarrow W_{ia}\frac{\Sigma_{\mu}H_{a\mu}V_{i\mu}/(WH)_{i\mu}}{\Sigma_{v}H_{av}}
+\end{array}
+$$</p>
+<p>invariant if and only if $W$ and $H$ are at a stationary point of  the distance.</p>
+<p>multiplicative factor is unity when $V=WH$, so that perfect reconstruction is necessarily a fixed point of the update rules.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-8">
+          <div class="inner">
+            
+            <header><h1>Multiplicative  versus  additive update rules</h1></header>
+            
+            
+            <section><p>Gradient descent</p>
+<p>1. Euclidean distance
+$$\begin{array}{c}
+H_{a\mu}\leftarrow+\eta_{a\mu}[(W^TV)_{a\mu}-(W^TWH)_{a\mu}]  \textrm{  set: } \eta_{a\mu}=\frac{H_{a\mu}}{(W^TWH)_{a\mu}}\\
+\Downarrow \\
+H_{a\mu}\leftarrow H_{a\mu}\frac{(W^{T}V_{a\mu})}{(W^{T}WH)_{a\mu}}\textrm{(in Theory 1)}
+\end{array}
+$$</p>
+<p>2.Divergence
+$$\begin{array}{c}
+H_{a\mu}\leftarrow+\eta_{a\mu}[\Sigma_iW_{ia}\frac{V_{i\mu}}{(WH)_{i\mu}-\Sigma_iW_{ia}}]  \textrm{  set: } \eta_{a\mu}=\frac{H_{a\mu}}{\Sigma_iW_{ia}}\\
+\Downarrow \\
+H_{au}\leftarrow\frac{\Sigma_i W_{ia}V_{i\mu}/(WH)_{i\mu}}{\Sigma_k W_{ka}}\textrm{(in Theory 2)}
+\end{array}
+$$</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-9">
+          <div class="inner">
+            
+            <header><h1>Proofs of convergence</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-10">
+          <div class="inner">
+            
+            <header><h1>Discussion</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>The update rules guaranteed to find at least locally optimal solutions of Problems 1 and 2.</li>
+<li>The convergence proofs rely upon <strong>defining an appropriate auxiliary function</strong>, more generalize?</li>
+<li>Easy  to  implement computationally, utilized  by  other applications?</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /10
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Algorithms for Non-negative Matrix Factorization</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">content</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Introduction</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Non-negative matrix factorization</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Cost functions</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Cost functions</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Multiplicative update rules</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Multiplicative  versus  additive update rules</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Proofs of convergence</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Discussion</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
 </body>
 </html>
