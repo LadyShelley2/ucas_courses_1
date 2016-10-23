@@ -78,7 +78,7 @@
             </aside>
             
             <aside class="page_number">
-              1/10
+              1/14
             </aside>
           </footer>
         </div>
@@ -126,7 +126,7 @@
             </aside>
             
             <aside class="page_number">
-              2/10
+              2/14
             </aside>
           </footer>
         </div>
@@ -139,6 +139,11 @@
             
             <header><h1>Introduction</h1></header>
             
+            
+            <section><img alt="file://D:\landslide\demos\./pics/author01.png" src="file://D:\landslide\demos\./pics/author01.png" />
+<p><strong>Daniel D. Lee</strong> Bell Laboratories Lucent Technologies.</p>
+<img alt="./pics/author02.jpg" src="./pics/author02.jpg" />
+<p><strong>H. Sebastian Seung</strong> Dept.of Brain and Cog. Sci. Massachusetts Institute of Technology Cambridge</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -154,7 +159,7 @@
             </aside>
             
             <aside class="page_number">
-              3/10
+              3/14
             </aside>
           </footer>
         </div>
@@ -165,6 +170,41 @@
         <div class="slide slide-4">
           <div class="inner">
             
+            <header><h1>Introduction</h1></header>
+            
+            
+            <section><p><strong>Non-negative matrix factorization (NMF)</strong></p>
+<ul class="simple">
+<li>Nonnegativity is useful constraint for matrix factorization that can learn a parts representation of the data.</li>
+<li>Sparse combinations to generate expressiveness in the reconstructions</li>
+</ul>
+<img alt="./pics/NMF_Face.png" src="./pics/NMF_Face.png" /></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/14
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
             <header><h1>Non-negative matrix factorization</h1></header>
             
             
@@ -172,6 +212,7 @@
 <p>$$
 V \approx{WH}
 $$</p>
+<img alt="./pics/400px-NMF.png" src="./pics/400px-NMF.png" />
 <ul class="simple">
 <li>$V$ is an $n\times m$ matrix: $m$ examples, $n$ features.</li>
 <li>$W_{n\times r}$, $H_{r\times m}$, where $r\lt m, r\lt n$. <strong>Compressed</strong> !</li>
@@ -194,7 +235,7 @@ $$</p>
             </aside>
             
             <aside class="page_number">
-              4/10
+              5/14
             </aside>
           </footer>
         </div>
@@ -202,7 +243,7 @@ $$</p>
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-5">
+        <div class="slide slide-6">
           <div class="inner">
             
             <header><h1>Cost functions</h1></header>
@@ -235,7 +276,7 @@ $$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$<
             </aside>
             
             <aside class="page_number">
-              5/10
+              6/14
             </aside>
           </footer>
         </div>
@@ -243,7 +284,7 @@ $$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$<
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-6">
+        <div class="slide slide-7">
           <div class="inner">
             
             <header><h1>Cost functions</h1></header>
@@ -253,7 +294,7 @@ $$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$<
 <p><strong>Problem2</strong> Minimize $D(A\Arrowvert B)$ with respect to $W$ and $H$, subject to the constraints $W,H\geq 0$.</p>
 
 <h2>Gradient descent</h2>
-<img alt="Gradient descent" src="./pics/256px-Gradient_descent.svg.png" /></section>
+<img alt="./pics/256px-Gradient_descent.svg.png" src="./pics/256px-Gradient_descent.svg.png" /></section>
             
           </div>
           <div class="presenter_notes">
@@ -269,7 +310,7 @@ $$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$<
             </aside>
             
             <aside class="page_number">
-              6/10
+              7/14
             </aside>
           </footer>
         </div>
@@ -277,7 +318,7 @@ $$D(A\Arrowvert B)=\Sigma_{ij}(A_{ij}\log\frac{A_{ij}}{B_{ij}}-A_{ij}+B_{ij})$$<
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-7">
+        <div class="slide slide-8">
           <div class="inner">
             
             <header><h1>Multiplicative update rules</h1></header>
@@ -313,7 +354,7 @@ $$</p>
             </aside>
             
             <aside class="page_number">
-              7/10
+              8/14
             </aside>
           </footer>
         </div>
@@ -321,7 +362,7 @@ $$</p>
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-8">
+        <div class="slide slide-9">
           <div class="inner">
             
             <header><h1>Multiplicative  versus  additive update rules</h1></header>
@@ -357,7 +398,7 @@ $$</p></section>
             </aside>
             
             <aside class="page_number">
-              8/10
+              9/14
             </aside>
           </footer>
         </div>
@@ -365,11 +406,19 @@ $$</p></section>
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-9">
+        <div class="slide slide-10">
           <div class="inner">
             
             <header><h1>Proofs of convergence</h1></header>
             
+            
+            <section><p><strong>Definition 1</strong>  $G(h,h')$ is an auxiliary function for $F(h)$ if the conditions
+$$G(h,h')\ge F(h),G(h,h)=F(h)$$
+are satisfied.</p>
+<p><strong>Lemma 1</strong>  If $G$ is an auxiliary function, then $F$ is  nonincreasing under the update</p>
+<p>$h^{t+1}=arg\min_{h}G(h,h^t)$</p>
+<img alt="./pics/auxiliary_function.png" src="./pics/auxiliary_function.png" />
+<p>Figure 1:  Minimizing the auxiliary function $G(h, h^t)\ge F(h)$  guarantees that $F(h^{t+1})\leq F(ht)$ for $h^{n+1}=arg\min_h G(h, h^t)$.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -385,7 +434,7 @@ $$</p></section>
             </aside>
             
             <aside class="page_number">
-              9/10
+              10/14
             </aside>
           </footer>
         </div>
@@ -393,14 +442,96 @@ $$</p></section>
       
       <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-10">
+        <div class="slide slide-11">
+          <div class="inner">
+            
+            <header><h1>Proofs of convergence</h1></header>
+            
+            
+            <section><p><strong>Lemma 2</strong>  If $K(h^t)$ is the diagonal matrix
+$$K_{ab}(h^{t})=\delta_{ab}(W^{T}Wh^{t})_{a}/h_{a}^{t}$$
+then
+$$G(h,h^t)=F(h^t)+(h-h^t)^T\nabla F(h^t)+\frac{1}{2}(h-h^t)^TK(h^t)(h-h^t)$$
+is an auxiliary function for
+$$F(h)=\frac{1}{2}\Sigma_{i}(v_i-\Sigma_a W_{ia}h_{a})^2$$</p>
+<p><strong>Proof of Theorem 1</strong></p>
+<p>$$h^{t+1}=h^t-K(h^T)-1\nabla F(h^t)$$</p>
+<p>$$h_a^{t+1}=h_a^t\frac{(W^Tv)_a}{(W^TWh^t)_a}$$</p>
+<p>reversing the roles of $W$ and $H$, $F$ can similarly be shown  to  be nonincreasing under the update rules for $W$.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/14
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-12">
+          <div class="inner">
+            
+            <header><h1>Proofs of convergence</h1></header>
+            
+            
+            <section><p><strong>Lemma 3</strong> Define
+$$\begin{array}{ll}
+G(h,h^t)=&amp;\Sigma_{i}(v_{i}\log v_{i} - v_{i})+\Sigma_{ia}W_{ia}h_{a}\\
+&amp;-\Sigma_{ia}v_{i}\frac{W_{ia}h_{a}^t}{\Sigma_{b}W_{ib}h_b^t}(\log W_{ia}h_{a}-\log\frac{W_{ia}h_{a}^t}{\Sigma_bW_{ib}h_{b}^t})
+\end{array}$$</p>
+<p>this is an auxiliary function for
+$$F(h)=\Sigma_{i}v_{i}\log(\frac{v_{i}}{\Sigma_aW_{ia}h_{a}})-v_{i}+\Sigma_{a}W_{ia}h_{a}$$</p>
+<p><strong>Proof of Theorem 2</strong> The minimum of $G(h,h^t)$ with respect to $h$ is determined by setting the gradient to zero:</p>
+<p>$$\frac{dG(h,h^t)}{dh_a}=-\Sigma_i v_i\frac{W_{ia}h_a^t}{\Sigma_bW_{ib}h_{b}^t}\frac{1}{h_{a}}+\Sigma_{i}W_{ia}=0$$</p>
+<p>update rule:</p>
+<p>$$
+h_{a}^{t+1}=\frac{h_a^t}{\Sigma_bW_{kb}}\Sigma_{i}\frac{v_{i}}{\Sigma_{b}W_{ib}h_{b}^t}W_{ia}
+$$</p>
+<p>Rewriten in matrix form, it is equivalent to the update rule.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/14
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: test.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-13">
           <div class="inner">
             
             <header><h1>Discussion</h1></header>
             
             
             <section><ul class="simple">
-<li>The update rules guaranteed to find at least locally optimal solutions of Problems 1 and 2.</li>
+<li>The update rules guaranteed to find <strong>at least locally optimal solutions</strong> of Problems 1 and 2.</li>
 <li>The convergence proofs rely upon <strong>defining an appropriate auxiliary function</strong>, more generalize?</li>
 <li>Easy  to  implement computationally, utilized  by  other applications?</li>
 </ul></section>
@@ -419,16 +550,18 @@ $$</p></section>
             </aside>
             
             <aside class="page_number">
-              10/10
+              13/14
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source:  -->
+      <!-- slide source: test.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-">
+        <div class="slide slide-14">
           <div class="inner">
+            
+            <header><h1>Thank you!</h1></header>
             
             
           </div>
@@ -440,8 +573,12 @@ $$</p></section>
           </div>
           <footer>
             
+            <aside class="source">
+              Source: <a href="test.rst">test.rst</a>
+            </aside>
+            
             <aside class="page_number">
-              /10
+              14/14
             </aside>
           </footer>
         </div>
@@ -474,13 +611,13 @@ $$</p></section>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Non-negative matrix factorization</a></th>
+        <th><a href="#slide4">Introduction</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Cost functions</a></th>
+        <th><a href="#slide5">Non-negative matrix factorization</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
@@ -492,26 +629,50 @@ $$</p></section>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Multiplicative update rules</a></th>
+        <th><a href="#slide7">Cost functions</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Multiplicative  versus  additive update rules</a></th>
+        <th><a href="#slide8">Multiplicative update rules</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Proofs of convergence</a></th>
+        <th><a href="#slide9">Multiplicative  versus  additive update rules</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Discussion</a></th>
+        <th><a href="#slide10">Proofs of convergence</a></th>
         <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Proofs of convergence</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Proofs of convergence</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Discussion</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Thank you!</a></th>
+        <td><a href="#slide14">14</a></td>
       </tr>
       
       
